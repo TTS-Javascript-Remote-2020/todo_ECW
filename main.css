@@ -24,6 +24,10 @@ body {
   height: 80%;
 }
 
+h1 {
+  font-size: 3rem;
+}
+
 form {
   border: 2px solid black;
   margin: 1rem;
