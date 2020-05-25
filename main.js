@@ -16,10 +16,12 @@ function crossOut(event) {
 
 addButton.addEventListener("click", function (event) {
   const newItem = inputBox.value;
+  const newDiv = document.createElement("div");
   const newLI = document.createElement("li");
   newLI.innerText = newItem;
   newLI.addEventListener("click", crossOut);
-  list.appendChild(newLI);
+  newDiv.appendChild(newLI);
+  list.appendChild(newDiv);
   inputBox.value = "";
   event.preventDefault();
 });
