@@ -1,27 +1,26 @@
-const addButton = document.getElementById("add-button");
-const inputBox = document.getElementById("input-box");
-const list = document.getElementById("list");
+const addButton = $("#add-button");
+const inputBox = $("#input-box");
+const list = $("#list");
 
 function crossOut(event) {
   const item = event.target;
-  item.style.textDecoration = "line-through";
+  $(item).css("textDecoration", "line-through");
   setTimeout(
     (item) => {
-      item.remove();
+      $(item).remove();
     },
     1000,
     item
   );
 }
 
-addButton.addEventListener("click", function (event) {
-  const newItem = inputBox.value;
-  const newDiv = document.createElement("div");
-  const newLI = document.createElement("li");
-  newLI.innerText = newItem;
-  newLI.addEventListener("click", crossOut);
-  newDiv.appendChild(newLI);
-  list.appendChild(newDiv);
-  inputBox.value = "";
+addButton.on("click", function (event) {
+  const itemText = inputBox.val();
+  const newItem = `<div><li class="item">${itemText}</li></div>`;
+
+  list.append(newItem);
+  itemNode = $(".item").last();
+  itemNode.on("click", crossOut);
+  inputBox.val("");
   event.preventDefault();
 });
